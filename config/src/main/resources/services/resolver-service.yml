@@ -1,0 +1,10 @@
+spring:
+  rabbitmq:
+    username: guest
+    password: guest
+    port: 5672
+    consumer: registration->resolver
+    producer: resolver->notification
+
+server:
+  port: 8083

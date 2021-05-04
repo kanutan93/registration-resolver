@@ -1,0 +1,9 @@
+zuul:
+  ignoredServices: '*'
+  routes:
+    registration-service:
+      path: /**
+      serviceId: registration-service
+
+server:
+  port: 8081

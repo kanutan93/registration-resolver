@@ -1,0 +1,19 @@
+spring:
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+  datasource:
+    url: jdbc:h2:mem:skbdb
+    username: sa
+    password: password
+  h2:
+    console:
+      enabled: true
+
+  rabbitmq:
+    username: guest
+    password: guest
+    port: 5672
+    producer: registration->resolver
+
+server:
+  port: 8082
