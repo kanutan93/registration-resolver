@@ -17,4 +17,5 @@
 
 
 Архитектура приложения:
-![arch2](https://user-images.githubusercontent.com/11816371/117037355-0da58c80-ad0f-11eb-94cf-3b9d6e06be48.png)
+![arch2 (1)](https://user-images.githubusercontent.com/11816371/117039475-7d1c7b80-ad11-11eb-9b4c-5e2e4bcaec44.png)
+
