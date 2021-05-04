@@ -8,17 +8,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class UserController {
+public class RegistrationController {
 
     private RegistrationService registrationService;
 
     @Autowired
-    public UserController(RegistrationService registrationService) {
+    public RegistrationController(RegistrationService registrationService) {
         this.registrationService = registrationService;
     }
 
     @PostMapping("/")
-    public Long createUser(@RequestBody RegistrationRequestDTO user) {
+    public Long createRegistration(@RequestBody RegistrationRequestDTO user) {
        return this.registrationService.createUser(
                 user.getLogin(), user.getPassword(), user.getEmail(), user.getFullname()
         );
