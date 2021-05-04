@@ -14,3 +14,7 @@
 
 
 Стэк: JavaSE 8+, Spring boot 2, dbms - h2, Junit/Mockito/Assertj
+
+
+Архитектура приложения:
+![arch2](https://user-images.githubusercontent.com/11816371/117037355-0da58c80-ad0f-11eb-94cf-3b9d6e06be48.png)
