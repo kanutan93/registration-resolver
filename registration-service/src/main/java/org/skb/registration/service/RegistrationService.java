@@ -33,7 +33,7 @@ public class RegistrationService {
     }
 
 
-    public Long createUser(String login, String password, String email, String fullname) {
+    public Long register(String login, String password, String email, String fullname) {
         Registration registration = new Registration(
                 login, new BCryptPasswordEncoder().encode(password), email, fullname
         );

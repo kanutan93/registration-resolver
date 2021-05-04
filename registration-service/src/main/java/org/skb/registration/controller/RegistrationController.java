@@ -19,7 +19,7 @@ public class RegistrationController {
 
     @PostMapping("/")
     public Long createRegistration(@RequestBody RegistrationRequestDTO user) {
-       return this.registrationService.createUser(
+       return this.registrationService.register(
                 user.getLogin(), user.getPassword(), user.getEmail(), user.getFullname()
         );
     }
