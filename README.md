@@ -36,7 +36,7 @@ docker-compose up
 ![arch2 (1)](https://user-images.githubusercontent.com/11816371/117039475-7d1c7b80-ad11-11eb-9b4c-5e2e4bcaec44.png)
 
 ### Описание
-1. Запускается config [config - Spring Cloud Config Server](https://cloud.spring.io/spring-cloud-config/reference/html/) для централизованного хранения конфигурации. Все микросервисы: registration-service, notification-service, resolver-service, gateway, registry будут брать свой конфиг отсюда.
+1. Запускается [config - Spring Cloud Config Server](https://cloud.spring.io/spring-cloud-config/reference/html/) для централизованного хранения конфигурации. Все микросервисы: registration-service, notification-service, resolver-service, gateway, registry будут брать свой конфиг отсюда.
 2. Запускается [registry - Spring Netflix Eureka](https://spring.io/projects/spring-cloud-netflix) - service discovery. Здесь регистрируются микросервисы: 
 registration-service, notification-service, resolver-service, gateway
 3. Запускается [gateway - Spring Netflix Zuul](https://spring.io/projects/spring-cloud-netflix) - gateway. В текущем проекте аналог reverse proxy. Проксирует запрос на микросервис registration-service.
