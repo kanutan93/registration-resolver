@@ -22,7 +22,7 @@ public class RegistrationService {
     private final RabbitTemplate rabbitTemplate;
 
     @Value("${spring.rabbitmq.producer}")
-    private String producer;
+    private String producer = "";
 
     @Autowired
     public RegistrationService(

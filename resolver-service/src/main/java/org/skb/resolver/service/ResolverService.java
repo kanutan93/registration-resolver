@@ -19,7 +19,7 @@ public class ResolverService {
     private static Logger log = LoggerFactory.getLogger(ResolverService.class);
 
     @Value("${spring.rabbitmq.producer}")
-    private String producer;
+    private String producer = "";
 
     private RabbitTemplate rabbitTemplate;
 

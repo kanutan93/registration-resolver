@@ -9,18 +9,7 @@ public class NotificationService {
 
     private static Logger log = LoggerFactory.getLogger(NotificationService.class);
 
-    public void sendMail(String toAddress, String messageBody) throws Exception {
-//        if(shouldThrowTimeout()) {
-//            sleep();
-//
-//            throw new Exception("Timeout!");
-//        }
-//
-//        if(shouldSleep()) {
-//            sleep();
-//        }
-
-        // ok.
+    public void sendMail(String toAddress, String messageBody) {
         log.info("Message sent to {}, body \"{}\".", toAddress, messageBody);
     }
 }
