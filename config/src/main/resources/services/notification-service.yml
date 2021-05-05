@@ -1,9 +1,15 @@
 spring:
   rabbitmq:
+    host: rabbitmq
     username: guest
     password: guest
     port: 5672
     consumer: resolver->notification
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://registry:8761/eureka
 
 server:
   port: 8084

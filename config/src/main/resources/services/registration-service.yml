@@ -10,10 +10,16 @@ spring:
       enabled: true
 
   rabbitmq:
+    host: rabbitmq
     username: guest
     password: guest
     port: 5672
     producer: registration->resolver
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://registry:8761/eureka
 
 server:
   port: 8082

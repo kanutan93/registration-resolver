@@ -1,0 +1,68 @@
+version: '3.5'
+services:
+  config:
+    container_name: config
+    build: config
+    ports:
+      - 8001:8001
+
+  registry:
+    container_name: registry
+    restart: always
+    build: registry
+    ports:
+      - 8761:8761
+    depends_on:
+      - config
+
+  gateway:
+    container_name: gateway
+    restart: always
+    build: gateway
+    ports:
+      - 8081:8081
+    depends_on:
+      - config
+      - registry
+
+  registration-service:
+    container_name: registration-service
+    restart: always
+    build: registration-service
+    ports:
+      - 8082:8082
+    depends_on:
+      - config
+      - registry
+      - gateway
+
+  resolver-service:
+    container_name: resolver-service
+    restart: always
+    build: resolver-service
+    ports:
+      - 8083:8083
+    depends_on:
+      - config
+      - registry
+
+  notification-service:
+    container_name: notification-service
+    restart: always
+    build: notification-service
+    ports:
+      - 8084:8084
+    depends_on:
+      - config
+      - registry
+
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:3-management
+    hostname: rabbitmq
+    ports:
+      - 5672:5672
+      - 15672:15672
+    depends_on:
+      - config
+      - registry
