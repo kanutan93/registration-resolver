@@ -1,9 +1,6 @@
 package org.skb.registration.dao.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Registration {
@@ -11,9 +8,17 @@ public class Registration {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long userId;
+
+    @Column(nullable = false)
     private String login;
+
+    @Column(nullable = false)
     private String password;
+
+    @Column(nullable = false)
     private String email;
+
+    @Column(nullable = false)
     private String fullname;
 
     public Registration() {

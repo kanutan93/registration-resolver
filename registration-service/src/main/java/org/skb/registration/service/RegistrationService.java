@@ -2,6 +2,7 @@ package org.skb.registration.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.hibernate.PropertyValueException;
 import org.skb.registration.dao.entity.Registration;
 import org.skb.registration.dao.repositrory.RegistrationRepository;
 import org.skb.registration.messaging.producer.RegistrationMessage;
@@ -34,9 +35,14 @@ public class RegistrationService {
 
 
     public Long register(String login, String password, String email, String fullname) {
-        Registration registration = new Registration(
-                login, new BCryptPasswordEncoder().encode(password), email, fullname
-        );
+        try {
+            password = new BCryptPasswordEncoder().encode(password);
+        } catch (Exception e) {
+            throw new PropertyValueException(e.getMessage(), Registration.class.getName(), "password");
+        }
+
+        Registration registration = new Registration(login, password, email, fullname);
+
         registration = registrationRepository.save(registration);
 
         RegistrationMessage registrationMessage = new RegistrationMessage();

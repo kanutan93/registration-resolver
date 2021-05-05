@@ -1,5 +1,6 @@
 eureka:
   client:
+    registryFetchIntervalSeconds : 5
     serviceUrl:
       defaultZone: http://registry:8761/eureka
 
@@ -9,6 +10,9 @@ zuul:
     registration-service:
       path: /**
       serviceId: registration-service
+
+ribbon:
+  ServerListRefreshInterval: 5000
 
 server:
   port: 8081
