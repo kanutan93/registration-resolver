@@ -22,10 +22,11 @@ public class RegistrationController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<Long> createRegistration(@RequestBody RegistrationRequestDTO user) {
+    public ResponseEntity<Long> createRegistration(@RequestBody RegistrationRequestDTO registration) {
         try {
             Long id = this.registrationService.register(
-                    user.getLogin(), user.getPassword(), user.getEmail(), user.getFullname()
+                    registration.getLogin(), registration.getPassword(),
+                    registration.getEmail(), registration.getFullname()
             );
             return ResponseEntity.ok(id);
         } catch (Exception e) {

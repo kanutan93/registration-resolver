@@ -1,5 +1,6 @@
 package org.skb.registration.controller;
 
+import org.json.JSONObject;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -24,6 +25,8 @@ import org.springframework.web.context.WebApplicationContext;
 
 import java.util.List;
 
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -42,9 +45,41 @@ public class RegistrationControllerTest {
     @Autowired
     private RegistrationService registrationService;
 
+    @MockBean
+    private RabbitTemplate rabbitTemplate;
+
     @BeforeEach
     public void setup() {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(context).build();
+    }
+
+
+    @Test
+    public void createRegistration() throws Exception {
+        doNothing().when(rabbitTemplate).convertAndSend(anyString(), anyString(), anyString());
+
+        String jsonString = new JSONObject()
+                .put("login", "test")
+                .put("password", "123")
+                .put("email", "test@gmail.com")
+                .put("fullname", "testFullname")
+                .toString();
+        MvcResult mvcResult = createRegistrationMvcRequest(jsonString);
+        String result = mvcResult.getResponse().getContentAsString();
+
+        Assertions.assertEquals(1L, Long.parseLong(result));
+        Assertions.assertEquals("test", registrationRepository.findById(1L).get().getLogin());
+        verify(rabbitTemplate, times(1)).convertAndSend(anyString(), anyString(), anyString());
+
+    }
+
+    private MvcResult createRegistrationMvcRequest(String content) throws Exception {
+        return mockMvc.perform(post("/")
+                .content(content)
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andReturn();
     }
 
 }
