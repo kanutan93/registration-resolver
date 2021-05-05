@@ -1,5 +1,7 @@
 # registration-resolver
 
+### Задача
+
 Форма регистрации с отправкой имейла после одобрения из внешней системы.
 
 
@@ -15,7 +17,21 @@
 
 Стэк: JavaSE 8+, Spring boot 2, dbms - h2, Junit/Mockito/Assertj
 
+### Запуск приложения: 
+Для запуска приложения необходимы следующие зависимости:
 
-Архитектура приложения:
+- Git
+- JDK 8
+- Apache Maven 3.1.1+
+- [Docker](https://docs.docker.com/engine/install/)
+- [Docker Compose](https://docs.docker.com/compose/install/)
+
+```shell
+mvn clean install
+docker-compose build --no-cache
+docker-compose up
+```
+
+### Архитектура приложения:
 ![arch2 (1)](https://user-images.githubusercontent.com/11816371/117039475-7d1c7b80-ad11-11eb-9b4c-5e2e4bcaec44.png)
 
