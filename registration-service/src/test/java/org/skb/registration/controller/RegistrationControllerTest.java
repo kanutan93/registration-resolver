@@ -47,28 +47,4 @@ public class RegistrationControllerTest {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(context).build();
     }
 
-    @Test
-    public void createRegistration() throws Exception {
-        String content = "{ \n " +
-                "  \"login\": \"test\",\n" +
-                "   \"password\" : \"123\", \n" +
-                "   \"email\": \"test@gmail.com\", \n" +
-                "   \"fullname\": \"test\" \n" +
-                "}";
-        MvcResult mvcResult = createRegistrationMvcRequest(content);
-        String result = mvcResult.getResponse().getContentAsString();
-
-        Assertions.assertEquals(1L, Long.parseLong(result));
-        Assertions.assertEquals("test", registrationRepository.findById(1L).get().getLogin());
-    }
-
-    private MvcResult createRegistrationMvcRequest(String content) throws Exception {
-        return mockMvc.perform(post("/")
-                .content(content)
-                .contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andReturn();
-    }
-
 }
