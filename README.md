@@ -40,7 +40,7 @@ docker-compose up
 2. Запускается [registry - Spring Netflix Eureka](https://spring.io/projects/spring-cloud-netflix) - service discovery. Здесь регистрируются микросервисы: 
 registration-service, notification-service, resolver-service, gateway
 3. Запускается [gateway - Spring Netflix Zuul](https://spring.io/projects/spring-cloud-netflix) - gateway. В текущем проекте аналог reverse proxy. Проксирует запрос на микросервис registration-service.
-4. Запускается в качестве нашего приложения 2 микросервиса: registration-service, notification-service. Для registration-service поднимается in-memory база h2.
+4. Запускаются в качестве нашего приложения 2 микросервиса: registration-service, notification-service. Для registration-service поднимается in-memory база h2.
 5. Запускается в качестве внешнего  приложения resolver-service
 6. Запускается RabbitMQ
 7. Клиент выполняет запрос для регистрации в системе по описанной в задаче модели. Запрос должен отправляется в Gateway (Netflix Zuul), работающем на порту 8081. 
